@@ -26,6 +26,7 @@ const move = e => {
 
 const unhook = _ => {
     elem.classList.remove('grabbed');
+    elem = undefined;
     document.removeEventListener('touchmove', move);
     document.removeEventListener('mousemove', move);
     document.removeEventListener('touchend', unhook);
@@ -53,7 +54,7 @@ window.addEventListener('load', _ => {
         elem.addEventListener('mousedown', hook);
         elem.style.top = Math.random()*window.innerHeight + 'px'; // redundant
         elem.style.left = Math.random()*window.innerWidth + 'px'; // redundant
-        elem.setAttribute("y", Math.floor(parseInt(elem.style.top))); // redundant
-        elem.setAttribute("x", Math.floor(parseInt(elem.style.left))); // redundant
+        elem.setAttribute("y", parseInt(elem.style.top)); // redundant
+        elem.setAttribute("x", parseInt(elem.style.left)); // redundant
     }
 });
