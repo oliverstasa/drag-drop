@@ -62,7 +62,7 @@ window.addEventListener('load', _ => {
             const x = Math.random()*window.innerWidth;
             elem.style.top = y + 'px';
             elem.style.left = x + 'px';
-            elem.setAttribute("y", parseInt(elem.style.top));
-            elem.setAttribute("x", parseInt(elem.style.left));
+            elem.setAttribute("y", y);
+            elem.setAttribute("x", x);
     }
 });
