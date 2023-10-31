@@ -11,6 +11,7 @@ const getCursorPos = e => {
     }
 };
 
+// on mouseMove, sets x, y position of element
 const move = e => {
     if (!elem) {
         return;
@@ -20,10 +21,12 @@ const move = e => {
     const x = cursor.x + pos.x + window.scrollX;
     elem.style.top = y + 'px';
     elem.style.left = x + 'px';
-    elem.setAttribute("y", Math.floor(y)); // redundant
-    elem.setAttribute("x", Math.floor(x)); // redundant
+        // set x, y for position display --> redundant
+        elem.setAttribute("y", Math.floor(y));
+        elem.setAttribute("x", Math.floor(x));
 };
 
+// removes event listeners for movement and annuls elem var
 const unhook = _ => {
     elem.classList.remove('grabbed');
     elem = undefined;
@@ -33,6 +36,7 @@ const unhook = _ => {
     document.removeEventListener('mouseup', unhook);
 };
 
+// sets event listeners for movement along with init pos
 const hook = e => {
     elem = e.target;
     elem.classList.add('grabbed');
@@ -48,13 +52,17 @@ const hook = e => {
     document.addEventListener('touchend', unhook);
 };
 
+// on load --> set event listeners for all elements
 window.addEventListener('load', _ => {
     const elements = document.querySelectorAll('div');
     for (const elem of elements) {
         elem.addEventListener('mousedown', hook);
-        elem.style.top = Math.random()*window.innerHeight + 'px'; // redundant
-        elem.style.left = Math.random()*window.innerWidth + 'px'; // redundant
-        elem.setAttribute("y", parseInt(elem.style.top)); // redundant
-        elem.setAttribute("x", parseInt(elem.style.left)); // redundant
+            // set random position --> redundant
+            const y = Math.random()*window.innerHeight;
+            const x = Math.random()*window.innerWidth;
+            elem.style.top = y + 'px';
+            elem.style.left = x + 'px';
+            elem.setAttribute("y", parseInt(elem.style.top));
+            elem.setAttribute("x", parseInt(elem.style.left));
     }
 });
