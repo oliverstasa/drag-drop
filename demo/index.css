@@ -24,3 +24,9 @@ div:after {
     top: 30%;
     right: -6rem;
 }
+
+h1 {
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 2rem;
+}
