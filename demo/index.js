@@ -57,6 +57,7 @@ window.addEventListener('load', _ => {
     const elements = document.querySelectorAll('div');
     for (const elem of elements) {
         elem.addEventListener('mousedown', hook);
+        elem.addEventListener('touchstart', hook);
             // set random position --> redundant
             const y = Math.random()*window.innerHeight;
             const x = Math.random()*window.innerWidth;
